@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-package</actionName>
+            <displayName>package</displayName>
+            <goals>
+                <goal>assembly:assembly</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-update</actionName>
+            <displayName>update</displayName>
+            <goals>
+                <goal>-U</goal>
+                <goal>package</goal>
+            </goals>
+        </action>
+    </actions>
