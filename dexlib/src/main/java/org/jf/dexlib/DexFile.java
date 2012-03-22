@@ -314,7 +314,7 @@ public class DexFile
                 inputStream.reset();
             } else {
                 fileLength = file.length();
-                if (fileLength < (long) 40) {
+                if (fileLength < 40) {
                     throw new RuntimeException(file.getName() + " is too small to be a valid dex file");
                 }
                 if (fileLength < 40) {
