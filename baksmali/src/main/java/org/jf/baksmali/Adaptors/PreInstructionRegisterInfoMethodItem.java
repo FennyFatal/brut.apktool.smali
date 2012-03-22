@@ -42,8 +42,6 @@ import java.io.IOException;
 import java.util.BitSet;
 
 public class PreInstructionRegisterInfoMethodItem extends MethodItem {
-    private static AnalyzedInstruction lastInstruction;
-
     private final AnalyzedInstruction analyzedInstruction;
     private final MethodAnalyzer methodAnalyzer;
 
@@ -73,9 +71,6 @@ public class PreInstructionRegisterInfoMethodItem extends MethodItem {
             } else {
                 if ((registerInfo & main.ARGS) != 0) {
                     addArgsRegs(registers);
-                }
-                if ((registerInfo & main.DIFFPRE) != 0) {
-                    addDiffRegs(registers);
                 }
                 if ((registerInfo & main.MERGE) != 0) {
                     addMergeRegs(registers, registerCount);
@@ -135,20 +130,6 @@ public class PreInstructionRegisterInfoMethodItem extends MethodItem {
             registers.set(instruction.getRegisterA());
         }
     }
-
-    private void addDiffRegs(BitSet registers) {
-        if (! analyzedInstruction.isBeginningInstruction()) {
-            for (int i = 0; i < analyzedInstruction.getRegisterCount(); i++) {
-                if (lastInstruction.getPreInstructionRegisterType(i).category !=
-                        analyzedInstruction.getPreInstructionRegisterType(i).category) {
-                    registers.set(i);
-                }
-            }
-        }
-
-        lastInstruction = analyzedInstruction;
-    }
-
 
     private void addMergeRegs(BitSet registers, int registerCount) {
         if (analyzedInstruction.isBeginningInstruction()) {
@@ -238,7 +219,7 @@ public class PreInstructionRegisterInfoMethodItem extends MethodItem {
                     writer.write("Start:");
                 } else {
                     writer.write("0x");
-                    writer.printLongAsHex(methodAnalyzer.getInstructionAddress(predecessor));
+                    writer.printUnsignedLongAsHex(methodAnalyzer.getInstructionAddress(predecessor));
                     writer.write(':');
                 }
                 predecessorRegisterType.writeTo(writer);
