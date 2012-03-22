@@ -28,19 +28,21 @@
 
 package org.jf.baksmali;
 
-import org.jf.baksmali.Adaptors.ClassDefinition;
-import org.jf.dexlib.ClassDefItem;
-import org.jf.dexlib.Code.Analysis.*;
-import org.jf.dexlib.DexFile;
-import org.jf.util.ClassFileNameHandler;
-import org.jf.util.IndentingWriter;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jf.baksmali.Adaptors.ClassDefinition;
+import org.jf.dexlib.ClassDefItem;
+import org.jf.dexlib.Code.Analysis.ClassPath;
+import org.jf.dexlib.Code.Analysis.CustomInlineMethodResolver;
+import org.jf.dexlib.Code.Analysis.InlineMethodResolver;
+import org.jf.dexlib.Code.Analysis.SyntheticAccessorResolver;
+import org.jf.dexlib.DexFile;
+import org.jf.util.ClassFileNameHandler;
+import org.jf.util.IndentingWriter;
 
 public class baksmali {
     public static boolean noParameterRegisters = false;
