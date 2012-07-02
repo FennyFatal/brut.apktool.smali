@@ -32,13 +32,14 @@ import org.apache.commons.cli.*;
 import org.jf.dexlib.Code.Opcode;
 import org.jf.dexlib.DexFile;
 import org.jf.util.ConsoleUtil;
-import org.jf.util.smaliHelpFormatter;
+import org.jf.util.SmaliHelpFormatter;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 public class main {
@@ -56,7 +57,6 @@ public class main {
     public static final int DEST = 16;
     public static final int MERGE = 32;
     public static final int FULLMERGE = 64;
-    public static final int DIFFPRE = 128;
 
     static {
         options = new Options();
@@ -85,6 +85,9 @@ public class main {
      * Run!
      */
     public static void main(String[] args) {
+        Locale locale = new Locale("en", "US");
+        Locale.setDefault(locale);
+
         CommandLineParser parser = new PosixParser();
         CommandLine commandLine;
 
@@ -321,20 +324,16 @@ public class main {
      * Prints the usage message.
      */
     private static void usage(boolean printDebugOptions) {
-        smaliHelpFormatter formatter = new smaliHelpFormatter();
-        formatter.setWidth(ConsoleUtil.getConsoleWidth());
+        SmaliHelpFormatter formatter = new SmaliHelpFormatter();
+        int consoleWidth = ConsoleUtil.getConsoleWidth();
+        if (consoleWidth <= 0) {
+            consoleWidth = 80;
+        }
+
+        formatter.setWidth(consoleWidth);
 
         formatter.printHelp("java -jar baksmali.jar [options] <dex-file>",
-                "disassembles and/or dumps a dex file", basicOptions, "");
-
-        if (printDebugOptions) {
-            System.out.println();
-            System.out.println("Debug Options:");
-
-            StringBuffer sb = new StringBuffer();
-            formatter.renderOptions(sb, debugOptions);
-            System.out.println(sb.toString());
-        }
+                "disassembles and/or dumps a dex file", basicOptions, printDebugOptions?debugOptions:null);
     }
 
     private static void usage() {

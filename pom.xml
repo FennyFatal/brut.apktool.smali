@@ -7,7 +7,7 @@
     <version>${aversion}</version>
     <packaging>pom</packaging>
     <properties>
-        <aversion>1.3.3-ibot7-SNAPSHOT</aversion>
+        <aversion>1.3.4-ibot7</aversion>
     </properties>
     <build>
         <plugins>
@@ -40,11 +40,11 @@
     <distributionManagement>
         <repository>
             <id>android-apktool.googlecode.com</id>
-            <url>dav:https://apktool2.googlecode.com/svn/m2-releases</url>
+            <url>dav:https://apktool2.googlecode.com/git/m2-releases</url>
         </repository>
         <snapshotRepository>
             <id>android-apktool.googlecode.com</id>
-            <url>dav:https://apktool2.googlecode.com/svn/m2-snapshots</url>
+            <url>dav:https://apktool2.googlecode.com/git/m2-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
