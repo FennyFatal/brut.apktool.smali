@@ -30,7 +30,6 @@ package org.jf.dexlib.Code.Analysis;
 
 import org.jf.dexlib.Code.OdexedInvokeInline;
 import org.jf.dexlib.Code.OdexedInvokeVirtual;
-import org.jf.dexlib.MethodIdItem;
 
 import static org.jf.dexlib.Code.Analysis.DeodexUtil.Static;
 import static org.jf.dexlib.Code.Analysis.DeodexUtil.Virtual;

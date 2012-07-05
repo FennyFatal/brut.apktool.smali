@@ -28,25 +28,22 @@
 
 package org.jf.baksmali.Adaptors;
 
-import org.jf.dexlib.Util.Utf8Utils;
-import org.jf.util.CommentingIndentingWriter;
-import org.jf.util.IndentingWriter;
-import org.jf.dexlib.*;
+import java.io.IOException;
+import java.util.List;
 import org.jf.dexlib.Code.Analysis.ValidationException;
 import org.jf.dexlib.Code.Format.Instruction21c;
 import org.jf.dexlib.Code.Format.Instruction41c;
 import org.jf.dexlib.Code.Instruction;
 import org.jf.dexlib.EncodedValue.EncodedValue;
+import org.jf.dexlib.*;
 import org.jf.dexlib.Util.AccessFlags;
 import org.jf.dexlib.Util.SparseArray;
-
-import javax.annotation.Nullable;
-import java.io.IOException;
-import java.util.List;
+import org.jf.dexlib.Util.Utf8Utils;
+import org.jf.util.CommentingIndentingWriter;
+import org.jf.util.IndentingWriter;
 
 public class ClassDefinition {
     private ClassDefItem classDefItem;
-    @Nullable
     private ClassDataItem classDataItem;
 
     private SparseArray<FieldIdItem> fieldsSetInStaticConstructor;
