@@ -29,4 +29,10 @@
             <version>${version}</version>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>android-apktool.googlecode.com</id>
+            <url>http://apktool2.googlecode.com/git/m2-releases</url>
+        </repository>
+    </repositories>
 </project>

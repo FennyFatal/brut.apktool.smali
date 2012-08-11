@@ -8,7 +8,7 @@
     <parent>
       <groupId>brut.apktool.smali</groupId>
       <artifactId>smali-pom</artifactId>
-      <version>1.3.3-ibot7</version>
+      <version>1.3.4-ibot7</version>
     </parent>
     <reporting>
        <plugins>
@@ -30,4 +30,10 @@
 	<version>4.6</version>
       </dependency> 
     </dependencies>
+    <repositories>
+        <repository>
+            <id>android-apktool.googlecode.com</id>
+            <url>http://apktool2.googlecode.com/git/m2-releases</url>
+        </repository>
+    </repositories>
 </project>
